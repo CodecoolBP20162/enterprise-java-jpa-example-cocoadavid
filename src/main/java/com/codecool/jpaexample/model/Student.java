@@ -27,6 +27,13 @@ public class Student {
     @OneToOne
     private Address address;
 
+    @ElementCollection
+    @Column(name = "Phone")
+    private List<String> phoneNumbers;
+
+    @ManyToOne
+    private Klass Class;
+
     public Student() {
     }
 
@@ -41,6 +48,12 @@ public class Student {
     public Student(String name, String email, Date dateOfBirth, Address address) {
         this(name, email, dateOfBirth);
         this.address = address;
+    }
+
+    public Student(String name, String email, Date dateOfBirth, Address address, Klass Class) {
+        this(name, email, dateOfBirth);
+        this.address = address;
+        this.Class = Class;
     }
 
     public long getId() {
@@ -85,6 +98,10 @@ public class Student {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public void setClass(Klass Class) {
+        this.Class = Class;
     }
 
     @Override
